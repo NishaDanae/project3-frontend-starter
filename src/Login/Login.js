@@ -6,7 +6,8 @@ let databaseURL = "http://localhost:3000/api/";
 
 class Login extends Component {
   state = {
-    newUser: {}
+    newUser: {},
+    users: []
   };
 
   createUser = event => {
@@ -14,12 +15,16 @@ class Login extends Component {
     axios({
       url: databaseURL + "users",
       method: "post",
-      data: this.state.newUser
+      data: {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        bio: this.state.bio
+      }
     }).then(response => {
       console.log(response);
-      // this.setState(prevState => ({
-      //   users: [...prevState.users, response.data.user]
-      // }));
+      this.setState(prevState => ({
+        users: [...prevState.users, response.data.user]
+      }));
     });
   };
 
