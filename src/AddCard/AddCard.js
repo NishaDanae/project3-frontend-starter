@@ -12,11 +12,12 @@ class AddCard extends React.Component {
     event.preventDefault();
     axios({
       method: "post",
-      url: `http://localhost:3000/api/`,
+      url: `http://localhost:3000/api/cards/1`,
       data: {
         term: this.state.term,
         definition: this.state.definition,
-        image: this.state.image
+        image: this.state.image,
+        mastered: false
       }
     }).then(response => {
       console.log(response);
@@ -29,14 +30,15 @@ class AddCard extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state.first_name);
-    console.log(this.state.last_name);
+    console.log(this.state.term);
+    console.log(this.state.definition);
+    console.log(this.state.image);
   };
 
   render() {
     return (
       <div class="row">
-        <form class="col s12">
+        <form onChange={this.handleChange} class="col s12">
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">flip_to_front</i>
@@ -45,12 +47,19 @@ class AddCard extends React.Component {
                 type="text"
                 class="validate"
                 name="term"
+                onChange={this.handleChange}
               />
               <label for="icon_prefix">Front</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">flip_to_back</i>
-              <input id="icon_telephone" type="tel" class="validate" />
+              <input
+                id="icon_telephone"
+                type="tel"
+                class="validate"
+                name="definition"
+                onChange={this.handleChange}
+              />
               <label for="icon_telephone">Back</label>
             </div>
             <div class="input-field col s6">
@@ -59,7 +68,8 @@ class AddCard extends React.Component {
                 id="icon_telephone"
                 type="tel"
                 class="validate"
-                name="definition"
+                name="image"
+                onChange={this.handleChange}
               />
               <label for="icon_telephone">Image</label>
             </div>
@@ -67,7 +77,7 @@ class AddCard extends React.Component {
               <button
                 class="btn waves-effect waves-light green accent-2"
                 type="submit"
-                name="image"
+                onClick={this.createCard}
               >
                 Submit
                 <i class="material-icons right ">send</i>

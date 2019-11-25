@@ -14,8 +14,8 @@ class Card extends React.Component {
     this.setState({ mastered: !this.state.mastered });
     axios({
       method: "put",
-      url: `http://localhost:3001/api/cards/${this.props.card.id}`,
-      mastered: this.state.mastered
+      url: `http://localhost:3000/api/cards/${this.props.card.id}`,
+      data: { mastered: this.state.mastered }
     }).then(response => console.log(response));
   };
 

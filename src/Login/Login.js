@@ -22,9 +22,6 @@ class Login extends Component {
       }
     }).then(response => {
       console.log(response);
-      this.setState(prevState => ({
-        users: [...prevState.users, response.data.user]
-      }));
     });
   };
 
