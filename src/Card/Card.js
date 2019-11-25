@@ -12,7 +12,7 @@ class Card extends React.Component {
     this.setState({ mastered: !this.state.mastered });
     axios({
       method: "put",
-      url: `http://localhost:3000/api/cards/${this.props.card.id}`,
+      url: `http://localhost:3001/api/cards/${this.props.card.id}`,
       mastered: this.state.mastered
     }).then(response => console.log(response));
   };
@@ -48,11 +48,8 @@ class Card extends React.Component {
             <i className="material-icons right small">expand_less</i>
             <p>
               <hr />
-              <a href="#">Edit</a>
+              <button onClick={this.handleDelete}> Delete </button>
               <hr />
-              <a onClick={this.handleDelete} href="#">
-                Delete
-              </a>
             </p>
           </span>
         </div>
