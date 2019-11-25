@@ -1,29 +1,21 @@
-import React from 'react';
-import './App.css';
-import axios from 'axios';
-import Login from '../src/Login';
-import Registration from '../src/Registration';
-// const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
-const databaseUrl = 'https://project3-backend-test.herokuapp.com'
+import React from "react";
+import "./App.css";
+import axios from "axios";
+import Login from "./Login/Login";
+import Card from "./Card/Card";
+import Registration from "../src/Registration";
+import CardList from "./CardList/CardList";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleSuccessfulAuth =this.handleSuccessfulAuth.bind(this);
-  }
-  handleSuccessfulAuth(data) {
-    this.props.handleLogin(data);
-    this.props.history.push("/decks");
-  }
   render() {
     return (
-      <div className="App" >
+      <div className="App">
         <header className="App-header">
           <h1>DECKSTER</h1>
           <div className="signin">
-            <Login/>
-            <button className="regSubmit" type="submit">Register Now!</button>
+            <CardList />
+            {/* <Login /> */}
+            {/* <Card /> */}
           </div>
         </header>
       </div>
