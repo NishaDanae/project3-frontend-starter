@@ -16,11 +16,7 @@ class CardList extends React.Component {
   handleDelete = id => {
     axios({
       method: "delete",
-<<<<<<< HEAD
       url: `http://localhost:3001/api/cards/${this.props.card.id}`
-=======
-      url: `http://localhost:3000/api/cards/${id}`
->>>>>>> 35256c3c4f58647ad16419f913dc2aa0595a52d6
     }).then(response => {
       this.setState({ cards: response.data.cards });
     });
