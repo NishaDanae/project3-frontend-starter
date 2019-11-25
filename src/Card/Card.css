@@ -1,0 +1,13 @@
+.card {
+  margin: 25%;
+}
+
+img {
+  height: 400px;
+  width: 300px;
+}
+
+.reveal-image {
+  height: 70%;
+  width: 100%;
+}

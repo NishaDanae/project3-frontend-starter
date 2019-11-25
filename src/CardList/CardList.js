@@ -12,6 +12,15 @@ class CardList extends React.Component {
     this.getCards();
   }
 
+  handleDelete = () => {
+    axios({
+      method: "delete",
+      url: `http://localhost:3000/api/cards/${this.props.card.id}`
+    }).then(response => {
+      this.setState({ cards: response.data.cards });
+    });
+  };
+
   getCards = async () => {
     axios({
       method: "get",
@@ -25,7 +34,9 @@ class CardList extends React.Component {
   render() {
     const { cards } = this.state;
     const renderedList = cards.map(card => {
-      return <Card key={card.id} card={card} />;
+      return (
+        <Card handleDelete={this.handleDelete} key={card.id} card={card} />
+      );
     });
 
     return <div>{renderedList}</div>;

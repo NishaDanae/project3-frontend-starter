@@ -1,29 +1,71 @@
 import React from "react";
+import "./Card.css";
+import axios from "axios";
 
 class Card extends React.Component {
+  state = {
+    mastered: false
+  };
+
+  handleMastered = event => {
+    event.stopPropagation();
+    this.setState({ mastered: !this.state.mastered });
+    axios({
+      method: "put",
+      url: `http://localhost:3000/api/cards/${this.props.card.id}`,
+      mastered: this.state.mastered
+    }).then(response => console.log(response));
+  };
+
   render() {
-    console.log(this.props);
     return (
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
+      <div className="card sticky-action">
+        <div className="card-image waves-effect waves-block waves-light">
           <img
-            class="activator"
+            className="activator"
             src={this.props.card.image}
             alt={this.props.card.term}
           />
         </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">
+        <div className="card-content">
+          <span className="card-title activator grey-text text-darken-4">
             {this.props.card.term}
-            <i class="material-icons right">more_vert</i>
+            {this.state.mastered ? (
+              <i
+                onClick={this.handleMastered}
+                className="material-icons right small"
+              >
+                bookmark
+              </i>
+            ) : (
+              <i
+                onClick={this.handleMastered}
+                className="material-icons right small"
+              >
+                bookmark_border
+              </i>
+            )}
+            <i className="material-icons right small">expand_less</i>
+            <p>
+              <hr />
+              <a href="#">Edit</a>
+              <hr />
+              <a onClick={this.handleDelete} href="#">
+                Delete
+              </a>
+            </p>
           </span>
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">
+        <div className="card-reveal small">
+          <span className="card-title grey-text text-darken-4">
             {this.props.card.definition}
-            <i class="material-icons right">close</i>
+            <i className="material-icons right">close</i>
           </span>
-          <img src={this.props.card.image} alt={this.props.card.definition} />
+          <img
+            className="reveal-image"
+            src={this.props.card.image}
+            alt={this.props.card.definition}
+          />
         </div>
       </div>
     );
