@@ -53,7 +53,7 @@ class Card extends React.Component {
             <div className="card-content">
               <span className="card-title activator grey-text text-darken-4">
                 {this.props.card.term}
-                {this.state.mastered ? (
+                {!this.state.mastered ? (
                   <i
                     onClick={this.handleMastered}
                     className="material-icons right small"

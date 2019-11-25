@@ -1,45 +1,26 @@
-import React from 'react';
-import './App.css';
-import axios from 'axios';
-// const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
-const databaseUrl = 'https://project3-backend-test.herokuapp.com'
+import React from "react";
+import "./Deck.css";
+import axios from "axios";
 
-class App extends React.Component {
-  state = {
-    users: []
-  }
-
-  componentDidMount() {
-    this.getUsers()
-  }
-
-  getUsers = () => {
-    axios({
-      url: `${databaseUrl}/api/users`,
-      // url: 'https://project3-backend-test.herokuapp.com/api/users',
-      method: 'get'
-    })
-      .then(users => {
-        console.log(users)
-        this.setState({ users })
-      })
-  }
-
+class Deck extends React.Component {
   render() {
-    console.log(this.state.users)
-    console.log("Rendered")
     return (
-      <div className="App" >
-        <header className="App-header">
-          <h1>DECKSTER</h1>
-          <div className="homeBtns">
-          <button className="newDeckBtn">+New Deck</button>
-         <button className="deckBtn">Decks</button>
-         </div>
-        </header>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{this.props.card.title}</span>
+              <p>{this.props.card.description}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Delete</a>
+              <a href="#">Study</a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default Deck;

@@ -5,6 +5,7 @@ import Login from "./Login/Login";
 import AddCard from "./AddCard/AddCard";
 import Registration from "../src/Registration";
 import CardList from "./CardList/CardList";
+import DeckList from "./DeckList/DeckList";
 
 class App extends React.Component {
   render() {
@@ -13,9 +14,10 @@ class App extends React.Component {
         <header className="App-header">
           <h1>DECKSTER</h1>
           <div className="signin">
+            <DeckList />
             {/* <Login /> */}
             {/* <CardList /> */}
-            <AddCard />
+            {/* <AddCard /> */}
           </div>
         </header>
       </div>
