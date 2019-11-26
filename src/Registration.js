@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
 class Registration extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            username:"",
             email: "",
             password: "",
             password_confirmation:"",
@@ -21,13 +23,15 @@ class Registration extends Component {
     }
     handleSubmit(event) {
         const{
+            username,
             email,
             password,
             password_confirmation
         } = this.state;
 
-        axios.post("http://localhost:3000/registration", {
+        axios.post("http://localhost:3001/registration", {
             user: {
+                username: username,
                 email: email,
                 password: password,
                 password_confirmation: password_confirmation
@@ -47,6 +51,13 @@ class Registration extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+            <input type="username" 
+            name="username" 
+            placeholder="Username" 
+            value={this.state.username} 
+            onChange={this.handleChange} 
+            required 
+            />
             <input type="email" 
             name="email" 
             placeholder="Email" 

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "./Register.css";
 import axios from "axios";
 
 let databaseURL = "http://localhost:3001/api/";
 
-class Login extends Component {
+class Register extends Component {
   state = {
-    newUser: {},
-    users: []
+    newUser: {}
   };
 
   createUser = event => {
@@ -15,13 +14,12 @@ class Login extends Component {
     axios({
       url: databaseURL + "users",
       method: "post",
-      data: {
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        bio: this.state.bio
-      }
+      data: this.state.newUser
     }).then(response => {
       console.log(response);
+      // this.setState(prevState => ({
+      //   users: [...prevState.users, response.data.user]
+      // }));
     });
   };
 
@@ -43,7 +41,7 @@ class Login extends Component {
     return (
       <div className="row">
         <h1>DECKSTER</h1>
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form
           // onSubmit={this.createUser}
           onChange={this.handleChange}
@@ -81,11 +79,10 @@ class Login extends Component {
             name="action"
             onClick={this.createUser}
           >
-            Login
+            Submit
             <i className="material-icons right ">send</i>
           </button>
         </form>
-        <a href="/register" className="btn waves-effect waves-light blue accent-2">Register</a>
       </div>
       //   <div>
       //     <form onSubmit={this.handleSubmit}>
@@ -106,10 +103,10 @@ class Login extends Component {
       //         onChange={this.handleChange}
       //         required
       //       />
-      //       <button type="submit">Login</button>
+      //       <button type="submit">Register</button>
       //     </form>
       //   </div>
     );
   }
 }
-export default Login;
+export default Register;

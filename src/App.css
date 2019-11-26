@@ -27,21 +27,37 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #09d3ac;
+.title{
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 150px;
 }
+#email, #password {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 35px;
+  color: black;
+}
+
 .username {
-  margin: 5px;
-  padding: 5px;
+  /* margin: 5px;
+  padding: 5px; */
   border: 2px solid black;
   border-radius: 3px;
+  color: black;
+  font-size: 50px;
+  font-display: bold;
+  font-family: 'Patrick Hand', cursive;
 }
 .password {
   margin: 5px;
   padding: 5px;
   border: 2px solid black;
   border-radius: 3px;
+  font-family: 'Patrick Hand', cursive;
+  color: black;
+  font-size: 50px;
+}
+#loginBtn {
+  align-items: center;
 }
 .homeBtns {
   display: flex;

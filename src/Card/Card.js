@@ -36,7 +36,7 @@ class Card extends React.Component {
     return (
       <div>
         <div onClick={this.setEdit} class="fixed-action-btn">
-          <a class="btn-floating btn-large red">
+          <a class="btn-floating btn-large green accent-2">
             <i class="large material-icons">mode_edit</i>
           </a>
         </div>

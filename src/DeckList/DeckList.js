@@ -7,13 +7,24 @@ class DeckList extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      decks: []
+      decks: [],
+      selectedDeck: null,
+      editedCard: {}
     };
   }
 
   componentDidMount() {
     this.getDecks();
   }
+
+  handleDelete = id => {
+    axios({
+      method: "delete",
+      url: `http://localhost:3001/api/cards/${id}`
+    }).then(response => {
+      this.setState({ decks: response.data.decks });
+    });
+  };
 
   getDecks = async () => {
     axios({
@@ -38,7 +49,24 @@ class DeckList extends React.Component {
       );
     });
 
-    return <div>{renderedList}</div>;
+    return (
+      <div>
+        <h1>Decks</h1>
+        <div class="fixed-action-btn">
+          <a class="btn-floating btn-large green accent-2">
+            <i class="large material-icons">mode_edit</i>
+          </a>
+          <ul>
+            <li>
+              <a class="btn-floating red">
+                <i class="material-icons">insert_chart</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>{renderedList}</div>
+      </div>
+    );
   }
 }
 

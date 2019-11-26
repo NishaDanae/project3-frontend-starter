@@ -1,23 +1,21 @@
 import React from "react";
-import "./AddCard.css";
+import "./AddDeck.css";
 import axios from "axios";
 
-class AddCard extends React.Component {
+class AddDeck extends React.Component {
   state = {
-    newCard: {},
-    currentDeck: 1
+    newDeck: {},
+    currentUser: 1
   };
 
   createCard = event => {
     event.preventDefault();
     axios({
       method: "post",
-      url: `http://localhost:3000/api/cards/1`,
+      url: `http://localhost:3000/api/decks/${this.state.currentUser}`,
       data: {
-        term: this.state.term,
-        definition: this.state.definition,
-        image: this.state.image,
-        mastered: false
+        title: this.state.title,
+        description: this.state.description
       }
     }).then(response => {
       console.log(response);
@@ -25,57 +23,43 @@ class AddCard extends React.Component {
   };
 
   handleChange = event => {
-    // console.log(event.target.value);
-    // console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state.term);
-    console.log(this.state.definition);
-    console.log(this.state.image);
+    console.log(this.state.title);
+    console.log(this.state.description);
   };
 
   render() {
     return (
       <div>
-        <h1>Add Card</h1>
+        <h1>Add Deck</h1>
         <div class="row">
           <form onChange={this.handleChange} class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <i class="material-icons prefix">flip_to_front</i>
+                <i class="material-icons prefix">title</i>
                 <input
                   id="icon_prefix"
                   type="text"
                   class="validate"
-                  name="term"
+                  name="title"
                   onChange={this.handleChange}
                 />
-                <label for="icon_prefix">Front</label>
+                <label for="icon_prefix">Title</label>
               </div>
               <div class="input-field col s6">
-                <i class="material-icons prefix">flip_to_back</i>
+                <i class="material-icons prefix">description</i>
                 <input
                   id="icon_telephone"
                   type="tel"
                   class="validate"
-                  name="definition"
+                  name="description"
                   onChange={this.handleChange}
                 />
-                <label for="icon_telephone">Back</label>
+                <label for="icon_telephone">Description</label>
               </div>
-              <div class="input-field col s6">
-                <i class="material-icons prefix">image</i>
-                <input
-                  id="icon_telephone"
-                  type="tel"
-                  class="validate"
-                  name="image"
-                  onChange={this.handleChange}
-                />
-                <label for="icon_telephone">Image</label>
-              </div>
-              <div class="input-field col s6">
+              <div class="input-field col s12">
                 <button
                   class="btn waves-effect waves-light green accent-2"
                   type="submit"
@@ -93,4 +77,4 @@ class AddCard extends React.Component {
   }
 }
 
-export default AddCard;
+export default AddDeck;

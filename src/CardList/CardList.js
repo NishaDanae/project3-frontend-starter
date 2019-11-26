@@ -16,7 +16,7 @@ class CardList extends React.Component {
   handleDelete = id => {
     axios({
       method: "delete",
-      url: `http://localhost:3000/api/cards/${id}`
+      url: `http://localhost:3001/api/cards/${id}`
     }).then(response => {
       this.setState({ cards: response.data.cards });
     });
@@ -26,7 +26,7 @@ class CardList extends React.Component {
     axios({
       method: "get",
       // eventually change the URL based on which deck is selected
-      url: "http://localhost:3000/api/cards"
+      url: "http://localhost:3001/api/cards"
     }).then(response => {
       this.setState({ cards: response.data.cards });
     });
