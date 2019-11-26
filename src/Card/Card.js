@@ -19,25 +19,25 @@ class Card extends React.Component {
     }).then(response => console.log(response));
   };
 
-  setEdit = () => {
-    this.setState({ editiing: !this.state.editing });
-    console.log(this.state.editing);
-  };
+  // setEdit = () => {
+  //   this.setState({ editiing: !this.state.editing });
+  //   console.log(this.state.editing);
+  // };
 
-  handleEdit = () => {
-    axios({
-      method: "put",
-      url: `http://localhost:3000/api/cards/${this.props.card.id}`,
-      data: {}
-    });
-  };
+  // handleEdit = () => {
+  //   axios({
+  //     method: "put",
+  //     url: `http://localhost:3000/api/cards/${this.props.card.id}`,
+  //     data: {}
+  //   });
+  // };
 
   render() {
     return (
       <div>
-        <div onClick={this.setEdit} class="fixed-action-btn">
-          <a class="btn-floating btn-large green accent-2">
-            <i class="large material-icons">mode_edit</i>
+        <div onClick={this.setEdit} className="fixed-action-btn">
+          <a href="/add-card" className="btn-floating btn-large green accent-2">
+            <i className="large material-icons">add</i>
           </a>
         </div>
         {!this.state.editing ? (
@@ -53,7 +53,7 @@ class Card extends React.Component {
             <div className="card-content">
               <span className="card-title activator grey-text text-darken-4">
                 {this.props.card.term}
-                {!this.state.mastered ? (
+                {this.state.mastered ? (
                   <i
                     onClick={this.handleMastered}
                     className="material-icons right small"
@@ -85,6 +85,9 @@ class Card extends React.Component {
                 {this.props.card.definition}
                 <i className="material-icons right">close</i>
               </span>
+              <hr />
+              <br />
+              <br />
               <img
                 className="reveal-image"
                 src={this.props.card.image}

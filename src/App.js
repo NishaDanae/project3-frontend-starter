@@ -22,29 +22,32 @@ class App extends React.Component {
 
   render() {
     return (
-      <AddDeck />
+      // <AddDeck />
       // <DeckList />
       // <AddCard />
-      // <Router>
-      //   <div className="App">
-      //     <Route
-      //       exact
-      //       path="/"
-      //       component={() => <Login login={this.login} />}
-      //     />
-      //     <Route path="/register" component={Register} />
-      //     <Route
-      //       path="/profile"
-      //       component={() => <Profile user={this.state.user} />}
-      //     />
-      //     <Route
-      //       path="/decks"
-      //       component={() => <Deck user={this.state.user} />}
-      //     />
-      //     <Route path="/card" component={Card} />
-      //     <Route path="/card-list" component={CardList} />
-      //   </div>
-      // </Router>
+      // <CardList />
+      <Router>
+        <div className="App">
+          <Route
+            exact
+            path="/"
+            component={() => <Login login={this.login} />}
+          />
+          <Route path="/register" component={Register} />
+          <Route
+            path="/profile"
+            component={() => <Profile user={this.state.user} />}
+          />
+          <Route
+            path="/deck-list"
+            component={() => <DeckList user={this.state.user} />}
+          />
+          <Route path="/add-deck" component={AddDeck} />
+          <Route path="/cards" component={Card} />
+          <Route path="/card-list" component={() => <CardList />} />
+          <Route path="/add-card" component={AddCard} />
+        </div>
+      </Router>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
+import "./CardList.css";
 import axios from "axios";
 
 class CardList extends React.Component {
@@ -16,7 +17,7 @@ class CardList extends React.Component {
   handleDelete = id => {
     axios({
       method: "delete",
-      url: `http://localhost:3001/api/cards/${id}`
+      url: `http://localhost:3000/api/cards/${id}`
     }).then(response => {
       this.setState({ cards: response.data.cards });
     });
@@ -26,7 +27,7 @@ class CardList extends React.Component {
     axios({
       method: "get",
       // eventually change the URL based on which deck is selected
-      url: "http://localhost:3001/api/cards"
+      url: "http://localhost:3000/api/cards/"
     }).then(response => {
       this.setState({ cards: response.data.cards });
     });
@@ -45,7 +46,11 @@ class CardList extends React.Component {
       );
     });
 
-    return <div>{renderedList}</div>;
+    return (
+      <div>
+        <div>{renderedList}</div>
+      </div>
+    );
   }
 }
 
