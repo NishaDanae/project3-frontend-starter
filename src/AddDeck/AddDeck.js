@@ -60,14 +60,14 @@ class AddDeck extends React.Component {
                 <label for="icon_telephone">Description</label>
               </div>
               <div class="input-field col s12">
-                <button
+                <a
                   class="btn waves-effect waves-light green accent-2"
                   type="submit"
                   onClick={this.createCard}
                 >
                   Submit
                   <i class="material-icons right ">send</i>
-                </button>
+                </a>
               </div>
             </div>
           </form>

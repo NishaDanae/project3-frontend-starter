@@ -1,22 +1,22 @@
-import React from 'react';
+import React from "react";
 // import './App.css';
-import axios from 'axios';
-// const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
-const databaseUrl = 'https://project3-backend-test.herokuapp.com'
+import axios from "axios";
 
 class Decks extends React.Component {
- 
   render() {
-    console.log(this.state.users)
-    console.log("Rendered")
+    console.log("Rendered");
     return (
-      <div className="App" >
+      <div className="App">
         <header className="App-header">
           <h1>DECKSTER</h1>
           <div className="homeBtns">
-          <button className="newDeckBtn">+New Deck</button>
-         <button className="deckBtn">Decks</button>
-         </div>
+            <a href="/add-deck" className="card">
+              New Deck
+            </a>
+            <a href="/deck-list" className="card">
+              Decks
+            </a>
+          </div>
         </header>
       </div>
     );

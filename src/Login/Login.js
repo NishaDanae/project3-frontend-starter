@@ -37,8 +37,6 @@ class Login extends Component {
     console.log(this.state.last_name);
   };
 
-  handleSubmit = event => {};
-
   render() {
     return (
       <div className="row">
@@ -85,7 +83,12 @@ class Login extends Component {
             <i className="material-icons right ">send</i>
           </button>
         </form>
-        <a href="/register" className="btn waves-effect waves-light blue accent-2">Register</a>
+        <a
+          href="/register"
+          className="btn waves-effect waves-light blue accent-2"
+        >
+          Register
+        </a>
       </div>
       //   <div>
       //     <form onSubmit={this.handleSubmit}>

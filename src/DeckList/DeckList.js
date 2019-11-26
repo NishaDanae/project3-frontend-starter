@@ -53,7 +53,7 @@ class DeckList extends React.Component {
       <div>
         <h1>Decks</h1>
         <div class="fixed-action-btn">
-          <a href="/addDeck" class="btn-floating btn-large green accent-2">
+          <a href="/add-deck" class="btn-floating btn-large green accent-2">
             <i class="large material-icons">add</i>
           </a>
         </div>
