@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import "./Login.css";
 import axios from "axios";
+import {
+  Link
+} from 'react-router-dom'
 
 let databaseURL = "http://localhost:3001/api/";
 
 class Login extends Component {
   state = {
-    newUser: {},
+    currentUser: {},
     users: []
   };
 
@@ -21,7 +24,9 @@ class Login extends Component {
         bio: this.state.bio
       }
     }).then(response => {
-      console.log(response);
+      console.log(response)
+      this.setState({ currentUser : response.data.user })
+
     });
   };
 
@@ -33,27 +38,28 @@ class Login extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state.first_name);
-    console.log(this.state.last_name);
+    // console.log(this.state.first_name);
+    // console.log(this.state.last_name);
   };
 
   handleSubmit = event => {};
 
   render() {
+    console.log(this.state)
     return (
       <div className="row">
         <h1>DECKSTER</h1>
-        <h2>Login</h2>
+        <h2>LOG IN OR REGISTER BELOW</h2>
         <form
           // onSubmit={this.createUser}
           onChange={this.handleChange}
+          onSubmit={event => this.createUser(event)}
           className="col s12"
         >
           <div className="row">
             <div className="input-field col s12">
               <input
                 // value={this.state.first_name}
-                onChange={this.handleChange}
                 id="first_name"
                 type="text"
                 className="validate"
@@ -69,21 +75,28 @@ class Login extends Component {
                 type="text"
                 className="validate"
                 // value={this.state.last_name}
-                onChange={this.handleChange}
                 name="last_name"
               />
               <label htmlFor="last_name">Last Name</label>
             </div>
           </div>
-          <button
+          <input type="submit" value='Login' className="btn waves-effect waves-light green accent-2"/>
+          {/* <Link
+  to={`/profile/${this.props.createUser}`}
+  type="button"
+  className="tn waves-effect waves-light green accent-2"
+>
+Login
+</Link> */}
+          {/* <button
             className="btn waves-effect waves-light green accent-2"
             type="submit"
             name="action"
-            onClick={this.createUser}
-          >
-            Login
-            <i className="material-icons right ">send</i>
-          </button>
+            onClick={`/profile/${this.props.createUser}`}
+          // > */}
+         <a href="/profile" className="btn waves-effect waves-light green accent-2">Login</a> 
+            {/* // <i className="material-icons right ">send</i> */}
+          {/* </button> */}
         </form>
         <a href="/register" className="btn waves-effect waves-light blue accent-2">Register</a>
       </div>
@@ -106,7 +119,7 @@ class Login extends Component {
       //         onChange={this.handleChange}
       //         required
       //       />
-      //       <button type="submit">Login</button>
+            
       //     </form>
       //   </div>
     );

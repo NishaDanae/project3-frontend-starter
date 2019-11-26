@@ -14,7 +14,11 @@ class Register extends Component {
     axios({
       url: databaseURL + "users",
       method: "post",
-      data: this.state.newUser
+      data: {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        bio: this.state.bio
+      }
     }).then(response => {
       console.log(response);
       // this.setState(prevState => ({
