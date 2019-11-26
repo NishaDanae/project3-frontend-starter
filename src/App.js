@@ -7,10 +7,12 @@ import Profile from "./Profile/Profile";
 import Deck from "./Deck/Deck";
 import Card from "./Card/Card";
 import CardList from "./CardList/CardList";
+
 import {
   BrowserRouter as Router,
   Route,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 
 let databaseURL = "http://localhost:3001/api/";
@@ -19,13 +21,14 @@ class App extends React.Component {
   constructor(props){
     super()
     this.state = {
-      currentUser: {},
-      redirect: false
+      user: {}
     }
+    console.log(props)
+    this.createUser = this.createUser.bind(this);
   }
 
 
-  createUser = user => {
+  createUser(user){
     // console.log('createUser App clicked')
     // console.log(user)
     // event.preventDefault();
@@ -37,20 +40,19 @@ class App extends React.Component {
         last_name: user.last_name
       }
     }).then(response => {
-      this.setState({ currentUser : response.data.user, redirect: true })
-      // this.props.history.push('/profile')
-      
+      this.setState({ user : response.data.user })
+      console.log('login')
+      console.log(this)
+      this.props.history.replace("/Home");
     });
   };
 
   login(user){
     this.setState({user})
+    
   }
 
   render() {
-    console.log(this.state)
-    if (this.state.redirect) { return <Redirect component={() => <Profile user={this.state.currentUser} />}  to='/profile' />  }
-   
     return (
       <Router>
         <div className="App">

@@ -81,7 +81,7 @@ Login
             name="action"
             onClick={`/profile/${this.props.createUser}`}
           // > */}
-         <a href="/profile" className="btn waves-effect waves-light green accent-2">Login</a> 
+         <a href="/profile" className="btn waves-effect waves-light green accent-2">Login</a>
             {/* // <i className="material-icons right ">send</i> */}
           {/* </button> */}
         </form>
