@@ -23,7 +23,6 @@ class App extends React.Component {
     this.state = {
       user: {}
     }
-    console.log(props)
     this.createUser = this.createUser.bind(this);
   }
 
@@ -40,10 +39,8 @@ class App extends React.Component {
         last_name: user.last_name
       }
     }).then(response => {
-      this.setState({ user : response.data.user })
-      console.log('login')
-      console.log(this)
-      this.props.history.replace("/Home");
+      this.setState({ user : response.data.user})
+      window.location.pathname = `/profile/$fn=${response.data.user.first_name}&ln=${response.data.user.last_name}`
     });
   };
 
@@ -58,8 +55,8 @@ class App extends React.Component {
         <div className="App">
           <Route exact path="/" component={() => <Login login={this.login} createUser={e => this.createUser(e)} />} />
           <Route path="/register" component={Register} />
-          <Route path="/profile" component={() => <Profile user={this.state.user} />} />
-          <Route path="/decks" component={() => <Deck user={this.state.user} />} />
+          <Route path="/profile/" component={Profile} />
+          <Route path="/deck/:id" component={Deck} />
           <Route path="/card" component={Card}/>
           <Route path="/card-list" component={CardList} />
         </div>

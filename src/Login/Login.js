@@ -36,7 +36,7 @@ class Login extends Component {
     return (
       <div className="row">
         <h1>DECKSTER</h1>
-        <h2>LOG IN OR REGISTER BELOW</h2>
+        <h2>LOGIN</h2>
         <form
           // onSubmit={this.createUser}
           onChange={this.handleChange}
@@ -81,7 +81,7 @@ Login
             name="action"
             onClick={`/profile/${this.props.createUser}`}
           // > */}
-         <a href="/profile" className="btn waves-effect waves-light green accent-2">Login</a>
+         {/* <a href="/profile" className="btn waves-effect waves-light green accent-2">Login</a> */}
             {/* // <i className="material-icons right ">send</i> */}
           {/* </button> */}
         </form>
