@@ -1,36 +1,24 @@
 import React, { Component } from "react";
 import "./Login.css";
-import axios from "axios";
 import {
   Link
 } from 'react-router-dom'
 
-let databaseURL = "http://localhost:3001/api/";
-
 class Login extends Component {
   state = {
-    currentUser: {},
-    users: []
-  };
-
-  createUser = event => {
-    event.preventDefault();
-    axios({
-      url: databaseURL + "users",
-      method: "post",
-      data: {
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        bio: this.state.bio
-      }
-    }).then(response => {
-      console.log(response)
-      this.setState({ currentUser : response.data.user })
-
-    });
+    currentUser: {}
   };
 
   componentDidMount() {}
+
+  createUser = event => {
+    event.preventDefault()
+    let user = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name
+    }
+    this.props.createUser(user)
+  }
 
   handleChange = event => {
     // console.log(event.target.value);
@@ -45,7 +33,6 @@ class Login extends Component {
   handleSubmit = event => {};
 
   render() {
-    console.log(this.state)
     return (
       <div className="row">
         <h1>DECKSTER</h1>
