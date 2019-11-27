@@ -16,6 +16,7 @@ class DeckList extends React.Component {
 
   componentWillMount() {
     this.getUserId();
+    console.log(this.state.userId);
   }
 
   componentDidMount() {

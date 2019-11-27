@@ -15,9 +15,8 @@ class Deck extends React.Component {
           </div>
           <div className="card-action">
             <a
-              href={"/card-list/" + this.props.userId}
+              href={"/card-list/" + this.props.deck.id}
               className="green-text accent-2 left"
-              href="#"
             >
               Study
             </a>

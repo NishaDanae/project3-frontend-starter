@@ -61,7 +61,7 @@ class App extends React.Component {
           />
           <Route path="/add-deck" component={AddDeck} />
           <Route path="/cards" component={Card} />
-          <Route path="/card-list" component={() => <CardList />} />
+          {/* <Route path="/card-list" component={() => <CardList />} /> */}
           <Route path="/add-card" component={AddCard} />
           <Route
             exact
@@ -73,7 +73,7 @@ class App extends React.Component {
           <Route path="/profile/" component={Profile} />
           <Route path="/deck/:id" component={Deck} />
           <Route path="/card" component={Card} />
-          {/* <Route path="/card-list" component={CardList} /> */}
+          <Route path="/card-list" component={CardList} />
         </div>
       </Router>
     );

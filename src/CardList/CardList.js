@@ -7,17 +7,22 @@ class CardList extends React.Component {
   state = {
     currentDeck: null,
     cards: [],
-    editedCard: {}
+    editedCard: {},
+    deckId: null
   };
 
   getDeckId = () => {
     var parts = window.location.pathname.split("/");
-    var userId = parts[parts.length - 1];
-    this.setState({ userId });
+    var deckId = parts[parts.length - 1];
+    this.setState({ deckId });
   };
 
+  componentWillMount() {
+    this.getDeckId();
+  }
+
   componentDidMount() {
-    this.getCards();
+    this.getCards(this.state.deckId);
   }
 
   handleDelete = id => {
@@ -29,13 +34,13 @@ class CardList extends React.Component {
     });
   };
 
-  getCards = async () => {
+  getCards = async id => {
     axios({
       method: "get",
       // eventually change the URL based on which deck is selected
-      url: "http://localhost:3000/api/cards/"
+      url: `http://localhost:3000/api/decks/${id}`
     }).then(response => {
-      this.setState({ cards: response.data.cards });
+      this.setState({ cards: response.data.Cards });
     });
   };
 
