@@ -1,57 +1,44 @@
 import React, { Component } from "react";
 import "./Login.css";
-import axios from "axios";
-
-let databaseURL = "http://localhost:3001/api/";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
-    newUser: {},
-    users: []
-  };
-
-  createUser = event => {
-    event.preventDefault();
-    axios({
-      url: databaseURL + "users",
-      method: "post",
-      data: {
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        bio: this.state.bio
-      }
-    }).then(response => {
-      console.log(response);
-    });
+    currentUser: {}
   };
 
   componentDidMount() {}
 
+  createUser = event => {
+    event.preventDefault();
+    let user = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name
+    };
+    this.props.createUser(user);
+  };
+
   handleChange = event => {
-    // console.log(event.target.value);
-    // console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state.first_name);
-    console.log(this.state.last_name);
   };
 
   render() {
     return (
       <div className="row">
         <h1>DECKSTER</h1>
-        <h2>Login</h2>
+        <h2>LOGIN</h2>
         <form
           // onSubmit={this.createUser}
           onChange={this.handleChange}
+          onSubmit={event => this.createUser(event)}
           className="col s12"
         >
           <div className="row">
             <div className="input-field col s12">
               <input
                 // value={this.state.first_name}
-                onChange={this.handleChange}
                 id="first_name"
                 type="text"
                 className="validate"
@@ -67,51 +54,26 @@ class Login extends Component {
                 type="text"
                 className="validate"
                 // value={this.state.last_name}
-                onChange={this.handleChange}
                 name="last_name"
               />
               <label htmlFor="last_name">Last Name</label>
             </div>
           </div>
-          <button
-            className="btn waves-effect waves-light green accent-2"
+          <input
             type="submit"
-            name="action"
-            onClick={this.createUser}
+            value="Login"
+            className="btn waves-effect waves-light green accent-2"
+          />
+          <br />
+          <a
+            href="/register"
+            className="btn waves-effect waves-light green
+           accent-2 black-text"
           >
-            Login
-            <i className="material-icons right ">send</i>
-          </button>
+            Register
+          </a>
         </form>
-        <a
-          href="/register"
-          className="btn waves-effect waves-light blue accent-2"
-        >
-          Register
-        </a>
       </div>
-      //   <div>
-      //     <form onSubmit={this.handleSubmit}>
-      //       <input
-      //         class="input-field inline"
-      //         type="email"
-      //         name="email"
-      //         placeholder="Username"
-      //         value={this.state.email}
-      //         onChange={this.handleChange}
-      //         required
-      //       />
-      //       <input
-      //         type="password"
-      //         name="password"
-      //         placeholder="Password"
-      //         value={this.state.password}
-      //         onChange={this.handleChange}
-      //         required
-      //       />
-      //       <button type="submit">Login</button>
-      //     </form>
-      //   </div>
     );
   }
 }

@@ -9,30 +9,42 @@ class DeckList extends React.Component {
     this.state = {
       decks: [],
       selectedDeck: null,
-      editedCard: {}
+      editedCard: {},
+      userId: null
     };
   }
 
-  componentDidMount() {
-    this.getDecks();
+  componentWillMount() {
+    this.getUserId();
   }
+
+  componentDidMount() {
+    this.getDecks(this.state.userId);
+  }
+
+  getUserId = () => {
+    var parts = window.location.pathname.split("/");
+    var userId = parts[parts.length - 1];
+    this.setState({ userId });
+  };
 
   handleDelete = id => {
     axios({
       method: "delete",
-      url: `http://localhost:3001/api/cards/${id}`
+      url: `http://localhost:3000/api/decks/${id}`
     }).then(response => {
       this.setState({ decks: response.data.decks });
     });
   };
 
-  getDecks = async () => {
+  getDecks = id => {
     axios({
       method: "get",
-      url: "http://localhost:3000/api/decks"
+      url: `http://localhost:3000/api/users/${id}`
     }).then(response => {
-      this.setState({ decks: response.data.decks });
-      console.log(this.state.decks);
+      this.setState({ decks: response.data.Decks });
+      // console.log(this.state.decks);
+      // console.log(this.state.userId);
     });
   };
 
@@ -41,10 +53,11 @@ class DeckList extends React.Component {
     const renderedList = decks.map(deck => {
       return (
         <Deck
+          userId={this.state.userId}
           decks={this.state.decks}
           handleDelete={this.handleDelete}
           key={deck.id}
-          card={deck}
+          deck={deck}
         />
       );
     });
@@ -57,7 +70,7 @@ class DeckList extends React.Component {
             <i class="large material-icons">add</i>
           </a>
         </div>
-        <div>{renderedList}</div>
+        <div className="row">{renderedList}</div>
       </div>
     );
   }

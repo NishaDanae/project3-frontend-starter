@@ -10,6 +10,12 @@ class CardList extends React.Component {
     editedCard: {}
   };
 
+  getDeckId = () => {
+    var parts = window.location.pathname.split("/");
+    var userId = parts[parts.length - 1];
+    this.setState({ userId });
+  };
+
   componentDidMount() {
     this.getCards();
   }
