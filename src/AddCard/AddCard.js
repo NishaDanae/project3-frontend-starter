@@ -6,11 +6,20 @@ import { valueToNode } from "@babel/types";
 class AddCard extends React.Component {
   state = {
     newCard: {},
-    currentDeck: 1,
     selectedImage: "",
     images: [],
     searchTerm: ""
   };
+
+  getDeckId = () => {
+    var parts = window.location.pathname.split("/");
+    var deckId = parts[parts.length - 1];
+    this.setState({ deckId });
+  };
+
+  componentWillMount() {
+    this.getDeckId();
+  }
 
   onImageSelect = (event, image) => {
     event.preventDefault();
@@ -35,7 +44,7 @@ class AddCard extends React.Component {
     event.preventDefault();
     axios({
       method: "post",
-      url: `http://localhost:3000/api/cards/1`,
+      url: `http://localhost:3000/api/cards/${this.state.deckId}`,
       data: {
         term: this.state.term,
         definition: this.state.definition,
@@ -59,6 +68,7 @@ class AddCard extends React.Component {
   };
 
   render() {
+    console.log(this.state.deckId);
     const imageList = this.state.images.map(image => (
       <div class="row">
         <div class="col s12 m7">
@@ -73,7 +83,6 @@ class AddCard extends React.Component {
             <div class="card-action">
               <a
                 onClick={event => this.onImageSelect(event, image.urls.regular)}
-                href="#"
               >
                 Select
               </a>

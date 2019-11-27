@@ -25,6 +25,7 @@ class Deck extends React.Component {
               onClick={this.props.handleDelete}
               href="#"
               onClick={() => this.props.handleDelete(this.props.deck.id)}
+              onClick={() => this.props.updateSelectedDeck(this.props.deck.id)}
             >
               Delete
             </a>

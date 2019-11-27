@@ -2,6 +2,8 @@ import React from "react";
 import Card from "../Card/Card";
 import "./CardList.css";
 import axios from "axios";
+import "../AddDeckActionButton/AddDeckActionButton";
+import AddCardActionButton from "../AddCardActionButton/AddCardActionButton";
 
 class CardList extends React.Component {
   state = {
@@ -57,8 +59,14 @@ class CardList extends React.Component {
       );
     });
 
-    return (
+    return !renderedList[0] ? (
       <div>
+        <AddCardActionButton deckId={this.state.deckId} />
+        <h1>Please Add a Card</h1>
+      </div>
+    ) : (
+      <div>
+        <AddCardActionButton deckId={this.state.deckId} />
         <div>{renderedList}</div>
       </div>
     );

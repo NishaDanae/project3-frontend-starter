@@ -4,9 +4,7 @@ import axios from "axios";
 
 class Card extends React.Component {
   state = {
-    mastered: false,
-    editing: false,
-    editedCard: {}
+    mastered: false
   };
 
   handleMastered = event => {
@@ -18,19 +16,6 @@ class Card extends React.Component {
       data: { mastered: this.state.mastered }
     }).then(response => console.log(response));
   };
-
-  // setEdit = () => {
-  //   this.setState({ editiing: !this.state.editing });
-  //   console.log(this.state.editing);
-  // };
-
-  // handleEdit = () => {
-  //   axios({
-  //     method: "put",
-  //     url: `http://localhost:3000/api/cards/${this.props.card.id}`,
-  //     data: {}
-  //   });
-  // };
 
   render() {
     return (

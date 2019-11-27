@@ -59,7 +59,10 @@ class App extends React.Component {
             path="/deck-list"
             component={() => <DeckList user={this.state.user} />}
           />
-          <Route path="/add-deck" component={AddDeck} />
+          <Route
+            path="/add-deck"
+            component={() => <AddDeck user={this.state.user} />}
+          />
           <Route path="/cards" component={Card} />
           {/* <Route path="/card-list" component={() => <CardList />} /> */}
           <Route path="/add-card" component={AddCard} />

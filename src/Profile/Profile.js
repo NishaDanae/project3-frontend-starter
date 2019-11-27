@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Profile.css";
 // import './App.css';
 // const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 // const databaseUrl = 'https://project3-backend-test.herokuapp.com'
@@ -28,9 +28,13 @@ class Profile extends React.Component {
     this.setState({ name, id });
   }
 
-  goToDecks() {
-    window.location.pathname = `/deck-list/${this.state.id}`;
+  goToAddDeck() {
+    window.location.pathname = `/add-deck/${this.state.id}`;
   }
+
+  goToDecks = () => {
+    window.location.pathname = `/deck-list/${this.state.id}`;
+  };
 
   render() {
     return (
@@ -39,11 +43,17 @@ class Profile extends React.Component {
           <h1>Welcome</h1>
           <h2>{this.state.name}</h2>
           {/* PASS THRU COMPONENT THAT IS ONLY THE USER NAME THEY ENTERED BEFORE */}
-          <div className="homeBtns">
-            <button className="newDeckBtn" onClick={() => this.goToDecks()}>
-              +New Deck
-            </button>
-            <button className="deckBtn">Decks</button>
+          <div className="row">
+            <div className="col s6 m5">
+              <button className="card small" onClick={() => this.goToAddDeck()}>
+                New Deck
+              </button>
+            </div>
+            <div className="col s6 m5">
+              <button className="card small" onClick={() => this.goToDecks()}>
+                Your Decks
+              </button>
+            </div>
           </div>
         </header>
       </div>

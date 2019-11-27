@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Deck from "../Deck/Deck";
+import AddDeckActionButton from "../AddDeckActionButton/AddDeckActionButton";
 import "./DeckList.css";
 
 class DeckList extends React.Component {
@@ -8,7 +9,7 @@ class DeckList extends React.Component {
     super();
     this.state = {
       decks: [],
-      selectedDeck: null,
+      selectedDeckId: null,
       editedCard: {},
       userId: null
     };
@@ -44,9 +45,11 @@ class DeckList extends React.Component {
       url: `http://localhost:3000/api/users/${id}`
     }).then(response => {
       this.setState({ decks: response.data.Decks });
-      // console.log(this.state.decks);
-      // console.log(this.state.userId);
     });
+  };
+
+  updateSelectedDeck = id => {
+    this.setState({ selectedDeckId: id });
   };
 
   render() {
@@ -59,18 +62,21 @@ class DeckList extends React.Component {
           handleDelete={this.handleDelete}
           key={deck.id}
           deck={deck}
+          updateSelectedDeck={this.updateSelectedDeck}
         />
       );
     });
 
-    return (
+    return !renderedList[0] ? (
       <div>
         <h1>Decks</h1>
-        <div class="fixed-action-btn">
-          <a href="/add-deck" class="btn-floating btn-large green accent-2">
-            <i class="large material-icons">add</i>
-          </a>
-        </div>
+        <h2>Please Make a Deck</h2>
+        <AddDeckActionButton deckId={this.state.selectedDeckId} />
+      </div>
+    ) : (
+      <div>
+        <h1>Decks</h1>
+        <AddDeckActionButton deckId={this.state.selectedDeckId} />
         <div className="row">{renderedList}</div>
       </div>
     );

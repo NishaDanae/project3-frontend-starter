@@ -5,14 +5,24 @@ import axios from "axios";
 class AddDeck extends React.Component {
   state = {
     newDeck: {},
-    currentUser: 1
+    userId: null
+  };
+
+  componentWillMount() {
+    this.getUserId();
+  }
+
+  getUserId = () => {
+    var parts = window.location.pathname.split("/");
+    var userId = parts[parts.length - 1];
+    this.setState({ userId });
   };
 
   createCard = event => {
     event.preventDefault();
     axios({
       method: "post",
-      url: `http://localhost:3000/api/decks/${this.state.currentUser}`,
+      url: `http://localhost:3000/api/decks/${this.state.userId}`,
       data: {
         title: this.state.title,
         description: this.state.description
@@ -31,6 +41,7 @@ class AddDeck extends React.Component {
   };
 
   render() {
+    console.log(this.state.userId);
     return (
       <div>
         <h1>Add Deck</h1>
@@ -65,8 +76,7 @@ class AddDeck extends React.Component {
                   type="submit"
                   onClick={this.createCard}
                 >
-                  Submit
-                  <i class="material-icons right ">send</i>
+                  Submit <i class="material-icons right ">send</i>
                 </a>
               </div>
             </div>
