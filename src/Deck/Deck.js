@@ -7,7 +7,7 @@ class Deck extends React.Component {
     console.log(this.props.deck.id);
     return (
       <div className="col s12 m6">
-        <div className="card large">
+        <div className="card card-large">
           <div className="card-content black-text">
             <span className="card-title">{this.props.deck.title}</span>
             <hr />
@@ -16,12 +16,12 @@ class Deck extends React.Component {
           <div className="card-action">
             <a
               href={"/card-list/" + this.props.deck.id}
-              className="green-text accent-2 left"
+              className="green-text accent-2"
             >
               Study
             </a>
             <a
-              className="green-text accent-2 right"
+              className="green-text accent-2"
               onClick={this.props.handleDelete}
               href="#"
               onClick={() => this.props.handleDelete(this.props.deck.id)}

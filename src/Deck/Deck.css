@@ -1,3 +1,4 @@
-.card {
-  margin: 10px;
+.card-large {
+  width: 700px;
+  height: 300px;
 }

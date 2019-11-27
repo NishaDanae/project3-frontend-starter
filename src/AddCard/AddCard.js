@@ -70,23 +70,19 @@ class AddCard extends React.Component {
   render() {
     console.log(this.state.deckId);
     const imageList = this.state.images.map(image => (
-      <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-image">
-              <img src={image.urls.regular} />
-              <span class="card-title"></span>
-            </div>
-            <div class="card-content black-text">
-              <h1>{image.alt_description.toUpperCase()}</h1>
-            </div>
-            <div class="card-action">
-              <a
-                onClick={event => this.onImageSelect(event, image.urls.regular)}
-              >
-                Select
-              </a>
-            </div>
+      <div class="col s1 m7">
+        <div class="card large">
+          <div class="card-image">
+            <img src={image.urls.regular} />
+            <span class="card-title"></span>
+          </div>
+          <div class="card-content black-text">
+            <h1>{image.alt_description.toUpperCase()}</h1>
+          </div>
+          <div class="card-action">
+            <a onClick={event => this.onImageSelect(event, image.urls.regular)}>
+              Select
+            </a>
           </div>
         </div>
       </div>
@@ -165,8 +161,8 @@ class AddCard extends React.Component {
               <i className="material-icons right ">send</i>
             </button>
           </div>
-          {imageList}
         </div>
+        <div> {imageList}</div>
       </div>
     );
   }

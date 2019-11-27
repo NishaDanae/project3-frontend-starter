@@ -2,19 +2,6 @@
   height: 40vmin;
 }
 
-/* .App-header {
-  background: #f857a6;
-  background: -webkit-linear-gradient(to right, #ff5858, #f857a6);
-  background: linear-gradient(to right, #f857a6, #ff5858);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
 body {
   background-image: linear-gradient(135deg, #5efce8 10%, #736efe 100%);
   /* background-image: linear-gradient(135deg, #f6ceec 10%, #d939cd 100%); */
@@ -27,55 +14,3 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.title {
-  font-family: "Mountains of Christmas", cursive;
-  font-size: 150px;
-}
-#email,
-#password {
-  font-family: "Patrick Hand", cursive;
-  font-size: 35px;
-  color: black;
-}
-
-.username {
-  /* margin: 5px;
-  padding: 5px; */
-  border: 2px solid black;
-  border-radius: 3px;
-  color: black;
-  font-size: 50px;
-  font-display: bold;
-  font-family: "Patrick Hand", cursive;
-}
-.password {
-  margin: 5px;
-  padding: 5px;
-  border: 2px solid black;
-  border-radius: 3px;
-  font-family: "Patrick Hand", cursive;
-  color: black;
-  font-size: 50px;
-}
-/* #loginBtn {
-  align-items: center;
-} */
-/* .homeBtns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.newDeckBtn {
-  color: palevioletred;
-  margin: 30px;
-  padding: 35px;
-  border: 2px solid black;
-  border-radius: 3px;
-}
-.deckBtn {
-  color: palevioletred;
-  margin: 30px;
-  padding: 35px;
-  border: 2px solid black;
-  border-radius: 3px;
-} */
