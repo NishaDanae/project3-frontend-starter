@@ -75,6 +75,7 @@ class AddDeck extends React.Component {
                   class="btn waves-effect waves-light green accent-2"
                   type="submit"
                   onClick={this.createCard}
+                  href={`/deck-list/${this.state.userId}`}
                 >
                   Submit <i class="material-icons right ">send</i>
                 </a>

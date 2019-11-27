@@ -47,38 +47,61 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.user);
     return (
       // <AddDeck />
       // <DeckList />
       // <AddCard />
       // <CardList />
-      <Router>
-        <div className="App">
-          <Route path="/register" component={Register} />
-          <Route
-            path="/deck-list"
-            component={() => <DeckList user={this.state.user} />}
-          />
-          <Route
-            path="/add-deck"
-            component={() => <AddDeck user={this.state.user} />}
-          />
-          <Route path="/cards" component={Card} />
-          {/* <Route path="/card-list" component={() => <CardList />} /> */}
-          <Route path="/add-card" component={AddCard} />
-          <Route
-            exact
-            path="/"
-            component={() => (
-              <Login login={this.login} createUser={e => this.createUser(e)} />
-            )}
-          />
-          <Route path="/profile/" component={Profile} />
-          <Route path="/deck/:id" component={Deck} />
-          <Route path="/card" component={Card} />
-          <Route path="/card-list" component={CardList} />
-        </div>
-      </Router>
+      <div>
+        <nav>
+          <div class="nav-wrapper green accent-2">
+            <a class="brand-logo">Deckster</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li>
+                <a
+                  href={`/profile/$fn=${this.state.user.first_name}&ln=${this.state.user.last_name}&id=${this.state.user.id}`}
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a href={`/deck-list/${this.state.user.id}`}>Decks</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <Router>
+          <div className="App">
+            <Route path="/register" component={Register} />
+            <Route
+              path="/deck-list"
+              component={() => <DeckList user={this.state.user} />}
+            />
+            <Route
+              path="/add-deck"
+              component={() => <AddDeck user={this.state.user} />}
+            />
+            <Route path="/cards" component={Card} />
+            {/* <Route path="/card-list" component={() => <CardList />} /> */}
+            <Route path="/add-card" component={AddCard} />
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <Login
+                  login={this.login}
+                  createUser={e => this.createUser(e)}
+                />
+              )}
+            />
+            <Route path="/profile/" component={Profile} />
+            <Route path="/deck/:id" component={Deck} />
+            <Route path="/card" component={Card} />
+            <Route path="/card-list" component={CardList} />
+          </div>
+        </Router>
+      </div>
     );
   }
 }

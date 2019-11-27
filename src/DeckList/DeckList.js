@@ -9,25 +9,24 @@ class DeckList extends React.Component {
     super();
     this.state = {
       decks: [],
-      selectedDeckId: null,
-      editedCard: {},
-      userId: null
+      deckId: null,
+      editedCard: {}
     };
   }
 
   componentWillMount() {
-    this.getUserId();
-    console.log(this.state.userId);
+    this.getDeckId();
+    console.log(this.state.deckId);
   }
 
   componentDidMount() {
-    this.getDecks(this.state.userId);
+    this.getDecks(this.state.deckId);
   }
 
-  getUserId = () => {
+  getDeckId = () => {
     var parts = window.location.pathname.split("/");
-    var userId = parts[parts.length - 1];
-    this.setState({ userId });
+    var deckId = parts[parts.length - 1];
+    this.setState({ deckId });
   };
 
   handleDelete = id => {
@@ -71,7 +70,7 @@ class DeckList extends React.Component {
       <div>
         <h1>Decks</h1>
         <h2>Please Make a Deck</h2>
-        <AddDeckActionButton deckId={this.state.selectedDeckId} />
+        <AddDeckActionButton deckId={this.state.deckId} />
       </div>
     ) : (
       <div>

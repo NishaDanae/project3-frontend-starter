@@ -61,13 +61,15 @@ class CardList extends React.Component {
 
     return !renderedList[0] ? (
       <div>
+        <h1>Cards</h1>
         <AddCardActionButton deckId={this.state.deckId} />
         <h1>Please Add a Card</h1>
       </div>
     ) : (
       <div>
+        <h1>Cards</h1>
         <AddCardActionButton deckId={this.state.deckId} />
-        <div>{renderedList}</div>
+        <div className="row">{renderedList}</div>
       </div>
     );
   }

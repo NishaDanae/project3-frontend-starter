@@ -81,7 +81,7 @@ class Card extends React.Component {
             </div>
           </div>
         ) : (
-          <div className="card sticky-action">
+          <div className="card small sticky-action">
             <div className="card-image waves-effect waves-block waves-light">
               <img
                 className="activator"

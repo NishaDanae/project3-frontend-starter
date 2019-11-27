@@ -7,10 +7,10 @@ body {
   /* background-image: linear-gradient(135deg, #f6ceec 10%, #d939cd 100%); */
   /* background-image: linear-gradient(135deg, #f5cbff 10%, #c346c2 100%); */
   min-height: 100vh;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: center; */
+  /* font-size: calc(10px + 2vmin); */
   color: white;
 }
