@@ -44,13 +44,13 @@ class Profile extends React.Component {
           <h2>{this.state.name}</h2>
           {/* PASS THRU COMPONENT THAT IS ONLY THE USER NAME THEY ENTERED BEFORE */}
           <div className="row">
-            <div className="col s6 m5">
-              <button className="card small" onClick={() => this.goToAddDeck()}>
+            <div className="col s12 m5">
+              <button className="card" onClick={() => this.goToAddDeck()}>
                 New Deck
               </button>
             </div>
-            <div className="col s6 m5">
-              <button className="card small" onClick={() => this.goToDecks()}>
+            <div className="col s12 m5">
+              <button className="card" onClick={() => this.goToDecks()}>
                 Your Decks
               </button>
             </div>
