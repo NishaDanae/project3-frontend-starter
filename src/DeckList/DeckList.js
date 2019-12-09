@@ -32,7 +32,7 @@ class DeckList extends React.Component {
   handleDelete = id => {
     axios({
       method: "delete",
-      url: `http://localhost:3000/api/decks/${id}`
+      url: `https://github.com/gatlin-carrier/project3-frontend-starter/${id}`
     }).then(response => {
       this.setState({ decks: response.data.decks });
     });
@@ -41,7 +41,7 @@ class DeckList extends React.Component {
   getDecks = id => {
     axios({
       method: "get",
-      url: `http://localhost:3000/api/users/${id}`
+      url: `https://github.com/gatlin-carrier/project3-frontend-starter/${id}`
     }).then(response => {
       this.setState({ decks: response.data.Decks });
     });

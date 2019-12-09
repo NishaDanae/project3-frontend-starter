@@ -22,7 +22,7 @@ class AddDeck extends React.Component {
     event.preventDefault();
     axios({
       method: "post",
-      url: `http://localhost:3000/api/decks/${this.state.userId}`,
+      url: `https://github.com/gatlin-carrier/project3-frontend-starter/${this.state.userId}`,
       data: {
         title: this.state.title,
         description: this.state.description

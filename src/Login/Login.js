@@ -26,53 +26,53 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="row">
-        <h1>DECKSTER</h1>
-        <h2>LOGIN</h2>
-        <form
-          // onSubmit={this.createUser}
-          onChange={this.handleChange}
-          onSubmit={event => this.createUser(event)}
-          className="col s12"
-        >
-          <div className="row">
-            <div className="input-field col s12">
-              <input
-                // value={this.state.first_name}
-                id="first_name"
-                type="text"
-                className="validate"
-                name="first_name"
-              />
-              <label htmlFor="first_name">First Name</label>
-            </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s12 ">
-              <input
-                id="last_name"
-                type="text"
-                className="validate"
-                // value={this.state.last_name}
-                name="last_name"
-              />
-              <label htmlFor="last_name">Last Name</label>
-            </div>
-          </div>
-          <input
-            type="submit"
-            value="Login"
-            className="btn waves-effect waves-light green accent-2"
-          />
-          <br />
-          <a
-            href="/register"
-            className="btn waves-effect waves-light green
-           accent-2 black-text"
+      <div className="container">
+        <div className="row">
+          <h2>LOGIN</h2>
+          <form
+            // onSubmit={this.createUser}
+            onChange={this.handleChange}
+            onSubmit={event => this.createUser(event)}
+            className="col s12"
           >
-            Register
-          </a>
-        </form>
+            <div className="row">
+              <div className="input-field col s12">
+                <input
+                  // value={this.state.first_name}
+                  id="first_name"
+                  type="text"
+                  className="validate"
+                  name="first_name"
+                />
+                <label htmlFor="first_name">First Name</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="input-field col s12 ">
+                <input
+                  id="last_name"
+                  type="text"
+                  className="validate"
+                  // value={this.state.last_name}
+                  name="last_name"
+                />
+                <label htmlFor="last_name">Last Name</label>
+              </div>
+            </div>
+            <input
+              type="submit"
+              value="Login"
+              className="btn waves-effect waves-light green accent-2"
+            />
+            <a
+              href="/register"
+              className="btn waves-effect waves-light green
+           accent-2 black-text"
+            >
+              Register
+            </a>
+          </form>
+        </div>
       </div>
     );
   }

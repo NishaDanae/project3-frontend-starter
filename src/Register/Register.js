@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./Register.css";
 import axios from "axios";
 
-let databaseURL = "http://localhost:3001/api/";
+let databaseURL =
+  "https://github.com/gatlin-carrier/project3-frontend-starter/";
 
 class Register extends Component {
   state = {

@@ -2,7 +2,8 @@ import React from "react";
 import "./Profile.css";
 // import './App.css';
 // const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
-// const databaseUrl = 'https://project3-backend-test.herokuapp.com'
+const databaseUrl =
+  "https://github.com/gatlin-carrier/project3-frontend-starter";
 
 class Profile extends React.Component {
   state = {
@@ -38,19 +39,19 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="container">
+        <header>
           <h1>Welcome</h1>
           <h2>{this.state.name}</h2>
           {/* PASS THRU COMPONENT THAT IS ONLY THE USER NAME THEY ENTERED BEFORE */}
           <div className="row">
             <div className="col s12 m5">
-              <button className="card" onClick={() => this.goToAddDeck()}>
+              <button className="card small" onClick={() => this.goToAddDeck()}>
                 New Deck
               </button>
             </div>
             <div className="col s12 m5">
-              <button className="card" onClick={() => this.goToDecks()}>
+              <button className="card small" onClick={() => this.goToDecks()}>
                 Your Decks
               </button>
             </div>

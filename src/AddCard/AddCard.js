@@ -44,7 +44,7 @@ class AddCard extends React.Component {
     event.preventDefault();
     axios({
       method: "post",
-      url: `http://localhost:3000/api/cards/${this.state.deckId}`,
+      url: `https://github.com/gatlin-carrier/project3-frontend-starter/${this.state.deckId}`,
       data: {
         term: this.state.term,
         definition: this.state.definition,

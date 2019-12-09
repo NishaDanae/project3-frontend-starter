@@ -17,7 +17,8 @@ import {
   withRouter
 } from "react-router-dom";
 
-let databaseURL = "http://localhost:3000/api/";
+let databaseURL =
+  "https://github.com/gatlin-carrier/project3-frontend-starter/";
 
 class App extends React.Component {
   constructor(props) {

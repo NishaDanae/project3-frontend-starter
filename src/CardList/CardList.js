@@ -30,17 +30,17 @@ class CardList extends React.Component {
   handleDelete = id => {
     axios({
       method: "delete",
-      url: `http://localhost:3000/api/cards/${id}`
+      url: `https://github.com/gatlin-carrier/project3-frontend-starter/${id}`
     }).then(response => {
       this.setState({ cards: response.data.cards });
     });
+    this.getCards(id);
   };
 
   getCards = async id => {
     axios({
       method: "get",
-      // eventually change the URL based on which deck is selected
-      url: `http://localhost:3000/api/decks/${id}`
+      url: `https://github.com/gatlin-carrier/project3-frontend-starter/${id}`
     }).then(response => {
       this.setState({ cards: response.data.Cards });
     });
